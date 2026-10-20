@@ -12,14 +12,14 @@ window.OC_DATA = {
   },
   characters: [
     { id:'ashiya', name:'アシヤ', en:'ASHIYA', group:'agency', role:'MAIN MEMBER', subtitle:'白髪の男', description:'便利屋側のキャラクター。人物設定と詳細プロフィールは今後追加予定。', image:'', attributes:['白髪','赤い瞳','褐色肌'], index:'01' },
-    { id:'blackhair', name:'黒髪の男（仮）', en:'MEMBER 02', group:'agency', role:'MAIN MEMBER', subtitle:'黒髪の男', description:'名前・紹介文は仮置きです。', image:'', attributes:['黒髪','琥珀色の目'], index:'02' },
-    { id:'pinkhair', name:'ピンク髪の男（仮）', en:'MEMBER 03', group:'agency', role:'MAIN MEMBER', subtitle:'ピンク髪の男', description:'名前・紹介文は仮置きです。', image:'', attributes:['ピンク髪','山羊角'], index:'03' },
+    { id:'zev', name:'ゼヴ', en:'ZEV', group:'agency', role:'MAIN MEMBER', subtitle:'黒髪の男', description:'便利屋のメインメンバー。紹介文は仮置きです。', image:'', attributes:['黒髪','琥珀色の目'], index:'02' },
+    { id:'nero', name:'ネロ', en:'NERO', group:'agency', role:'MAIN MEMBER', subtitle:'ピンク髪の男', description:'便利屋のメインメンバー。紹介文は仮置きです。', image:'', attributes:['ピンク髪','山羊角'], index:'03' },
     { id:'sister', name:'シスター（仮）', en:'CHURCH 01', group:'church', role:'CHURCH', subtitle:'教会組', description:'教会側のキャラクター。名前・人物設定は未登録です。', image:'', attributes:[], index:'04' },
     { id:'informant01', name:'情報屋 01（仮）', en:'INFORMANT 01', group:'informants', role:'INFORMANT', subtitle:'協力者', description:'情報屋の一人。名前・人物設定は未登録です。', image:'', attributes:[], index:'05', prompts:{ character:'', composition:'' } },
     { id:'informant02', name:'情報屋 02（仮）', en:'INFORMANT 02', group:'informants', role:'INFORMANT', subtitle:'協力者', description:'情報屋の一人。名前・人物設定は未登録です。', image:'', attributes:[], index:'06', prompts:{ character:'', composition:'' } },
   ],
   locations: [
-    { id:'office', name:'便利屋の事務所', en:'THE AGENCY OFFICE', index:'001', category:'MAIN BASE', group:'agency', image:'', description:'便利屋の活動拠点。詳しい住所・建物の設定・外観や内観の画像は未登録です。', details:[['施設の種類','活動拠点'],['外観','未登録'],['内装','未登録'],['設備','未登録']], related:['ashiya','blackhair','pinkhair'] },
+    { id:'office', name:'便利屋の事務所', en:'THE AGENCY OFFICE', index:'001', category:'MAIN BASE', group:'agency', image:'', description:'便利屋の活動拠点。詳しい住所・建物の設定・外観や内観の画像は未登録です。', details:[['施設の種類','活動拠点'],['外観','未登録'],['内装','未登録'],['設備','未登録']], related:['ashiya','zev','nero'] },
     { id:'church', name:'教会', en:'THE CHURCH', index:'002', category:'ASSOCIATE BASE', group:'church', image:'', description:'教会組に関連する施設。建物の正式名称や詳細は今後登録します。', details:[['施設の種類','教会'],['外観','未登録'],['内装','未登録'],['設備','未登録']], related:['sister'] }
   ],
   gallery: [

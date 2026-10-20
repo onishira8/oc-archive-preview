@@ -1,0 +1,229 @@
+/* THE AGENCY — ROCK / PUNK CUT · v0.3
+   Black photocopy-paper atmosphere, crimson navigation and restrained pasted-photo cards.
+   All graphics are CSS; actual character illustrations are supplied by the site owner. */
+:root{
+  color-scheme:dark;
+  --bg:#0b0b0e;--sidebar:#ad202d;--panel:#18191d;--panel2:#242226;
+  --line:#383338;--line2:#625359;--text:#f4f0eb;--muted:#aba3a4;--soft:#d1c9c7;
+  --red:#e63847;--red2:#aa2033;--blue:#91a4ba;--violet:#ae99b6;
+  --ink:#141317;--paper:#f0ece4;--orange:#be2637;--butter:#d9d1c4;--cream:#e6ddd1;
+  --shadow:5px 6px 0 #000;
+  --mono:Impact,'Arial Narrow','Arial Black','Helvetica Neue',Arial,sans-serif;
+  --serif:Georgia,'Times New Roman',serif;
+}
+body{
+  color:var(--text);background-color:#0b0b0e;overflow-x:clip;
+  background-image:radial-gradient(#ffffff0e 1px,transparent 1px),repeating-linear-gradient(115deg,transparent 0 96px,#ffffff07 97px,transparent 99px),radial-gradient(ellipse at 80% 45%,#7d23301b,transparent 60%),linear-gradient(180deg,#101014,#09090b);
+  background-size:24px 24px,auto,auto;
+}
+::selection{background:#bb293a;color:#fff}
+:where(a,button,textarea):focus-visible{outline:3px solid #ffdbda;outline-offset:3px}
+/* A single bold red rail; the selected tab looks like a paper label */
+.sidebar{
+  background-color:#af2433;
+  background-image:repeating-linear-gradient(160deg,#00000000 0 14px,#0b000006 15px 16px),radial-gradient(#f6e7df14 1px,transparent 1px);
+  background-size:auto,12px 12px;border-right:2px solid #09090b;box-shadow:5px 0 0 #09090b;
+}
+.brand{background:#151417;color:#f8f3ec;border:2px solid #f0ece4;box-shadow:4px 4px 0 #5e111b;transform:rotate(-.8deg);border-radius:0}
+.brand strong{color:#fff;font-family:var(--mono);font-size:22px;letter-spacing:.005em}
+.brand strong span{color:#f35965}.brand small{color:#d4c9c8;letter-spacing:.17em}
+.brand-mark{transform:rotate(-8deg)}.brand-mark span{border:1.5px solid #f3ede6!important}
+.brand-mark span:first-child{background:#d42f3e}.brand-mark span:last-child{background:#201a1d}
+.side-divider{height:1px;background:#ffffff6f;margin:34px 0 25px}
+.side-nav{gap:25px}.nav-title{color:#f0bdc3;font-size:10px;letter-spacing:.22em;font-weight:900}
+.nav-link{color:#fff0ef;border:1px solid transparent;border-radius:1px;box-shadow:none;font-weight:800}
+.nav-icon{color:#f2bdc3}.nav-link:hover{color:#fff;background:#891726;transform:translateX(3px)}
+.nav-link.active{color:#1a1518;background:#f0ebe3;border:2px solid #151216;box-shadow:4px 4px 0 #711420;transform:rotate(-.5deg)}
+.nav-link.active .nav-icon{color:#ad2431}.nav-link.active .active-dot{background:#bc2438}
+.side-bottom{border-top:1px dashed #f3ccd091;color:#fff3ee}
+.side-bottom small{color:#f1c3ca}.live-pulse{background:#fff1e9;box-shadow:none}
+.topbar{background:#141316;border-bottom:1px solid #444046;color:#fff}
+.crumb,.crumb strong{color:#f0e8e5}.crumb span{color:#ed4456}.top-tag{color:#979095}
+.status-badge{border:1px solid #b73748;border-radius:0;background:#282024;color:#f3e8e5;box-shadow:none;font-weight:800}
+.status-badge i{background:#e63847}.menu-toggle{color:#f4ebeb}
+.main-content{padding-top:36px}.footer{border-top:1px dashed #6d555b;color:#999097}.footer em{color:#e94856}
+/* Typography: heavier, less whimsical */
+.eyebrow,.section-num,.section-num-small{color:#f15a66;font-size:10px;letter-spacing:.18em}
+.eyebrow i{background:#e63847}
+.section-heading:after{content:'';display:none}
+.section-heading h2,.section-heading h2 em,.page-heading h1{font-family:var(--mono);text-transform:uppercase;letter-spacing:-.008em;font-weight:900;color:#f5eee9;text-shadow:none}
+.section-heading h2{font-size:clamp(31px,3.8vw,52px)}
+.section-heading h2 em{color:#ef485a;font-style:normal}
+.section-heading p,.page-heading>p{color:#b9b0b2}
+.page-heading h1{color:#f7f2ec;font-size:clamp(46px,6.8vw,90px);text-shadow:none}
+.result-count{color:#e5ccce}
+.btn{border:2px solid #f1eae5;border-radius:0;box-shadow:4px 4px 0 #060607;transition:transform .19s ease,box-shadow .19s ease}
+.btn:hover{transform:translate(-1px,-3px);box-shadow:5px 6px 0 #030304}
+.btn-primary{background:#ce2d40;color:#fff;border-color:#eeced0}.btn-primary:hover{background:#ed4051}
+.btn-text{background:#242026;color:#f4e7e6;border-color:#75636c}
+.text-link,.backlink{color:#ebe0dc}.text-link:hover,.backlink:hover{color:#ff6972}
+.seg-tabs{background:#231d22;border:1px solid #5a424c;border-radius:0;box-shadow:none}
+.seg-btn{color:#bfb1b5;border-radius:0}.seg-btn:hover:not(.selected){background:#413039;color:#fff}
+.seg-btn.selected{background:#c62c40;color:#fff;box-shadow:none}
+.editorial-note{background:#231d20;color:#c7b7b8;border-left:3px solid #ea4656;box-shadow:none}
+/* Hero: a gig-poster spread, but the three photographs stay central */
+.home-hero{
+  background:#1b191d;
+  background-image:radial-gradient(#ffffff0e .9px,transparent .9px),linear-gradient(122deg,#252027 0%,#161417 62%,#281b22 100%);
+  background-size:17px 17px,auto;
+  border:1px solid #5f5157;border-radius:1px;
+  box-shadow:8px 9px 0 #030304;margin-bottom:92px;
+}
+.home-hero:after{background:linear-gradient(144deg,transparent 0 75%,#a820323e 75% 100%);opacity:1;border-radius:0}
+.hero-contours{right:-5%;width:50%;top:-16%;border:2px solid #c12e4350;opacity:.22;box-shadow:0 0 0 58px #be25300a}
+.hero-rail{color:#d1a2a6;border-bottom:1px solid #595158;letter-spacing:.16em}
+.hero-rail span{color:#8c838a}
+.hero-left .eyebrow{color:#f06b76}
+.hero-title{transform:rotate(0);font-family:var(--mono);line-height:.86;letter-spacing:-.045em}
+.hero-title span{color:#faf4ec}
+.hero-title strong{color:#e73c51;-webkit-text-stroke:0;text-shadow:4px 5px 0 #09080a;letter-spacing:-.015em}
+.hero-period{color:#f3e9e3!important;-webkit-text-stroke:0}
+.hero-jp{color:#f5eeee;font-weight:850;font-size:19px}.hero-sub{color:#c7babc}
+.hero-bottom,.hero-counter{color:#999094}.scroll-line{background:#dd344b}.vertical-word{color:#a38187}
+.hero-scrap{width:45%;right:1%;top:5%;height:88%}
+.hero-photo{
+  width:46%;
+  padding:9px 9px 5px;
+  background:#eee8e0;border:2px solid #211d1f;
+  box-shadow:7px 10px 0 #070708a8;
+  animation:photo-enter .55s ease-out backwards;
+  transition:transform .24s ease,box-shadow .24s ease;
+}
+@keyframes photo-enter{from{opacity:0;transform:translateY(-12px) rotate(0deg)}to{opacity:1}}
+.hero-photo-1{top:6%;left:2%;transform:rotate(-6deg)}.hero-photo-2{top:14%;left:50%;transform:rotate(5deg)}.hero-photo-3{top:58%;left:20%;transform:rotate(-2deg)}
+.hero-photo-1:hover,.hero-photo-2:hover,.hero-photo-3:hover{transform:translateY(-7px) rotate(0deg) scale(1.015)}
+.hero-photo:hover{box-shadow:9px 13px 0 #030304c9}
+.hero-photo:before{width:45px;height:15px;top:-10px;background:#b73245ba;border-color:#891b30;left:40%;transform:rotate(-6deg)}
+.hero-photo-art{border:1px solid #847b7b;background:#272328}.hero-photo-label{color:#241e20}
+.hero-photo-label b{font-family:var(--mono);font-size:14px;letter-spacing:.02em}.hero-photo-label span{color:#8b3f4b}
+.hero-stamp{background:#c02c41;color:#fff;border:2px solid #fff1e8;border-radius:0;box-shadow:5px 5px 0 #080709;transform:rotate(7deg);width:93px;height:74px;font-size:13px;line-height:1.15}
+.hero-marker,.hero-scribble{display:none}
+/* Photos: less tilt, fewer tape decorations; darker images until real pictures are uploaded */
+.char-grid{gap:25px 23px}
+.char-card{background:#ede9e1;border:1px solid #272126;padding:10px 10px 0;box-shadow:5px 7px 0 #040404;transform:rotate(-.65deg)}
+.char-card:nth-child(3n+2){transform:rotate(.75deg)}.char-card:nth-child(3n){transform:rotate(-.2deg)}
+.char-card:hover,.char-card:nth-child(3n+2):hover,.char-card:nth-child(3n):hover{transform:translateY(-8px) rotate(0deg);box-shadow:8px 11px 0 #000}
+.char-card-art{border:1px solid #6b5e62;background:#28272c}
+.char-card-art .paper-tape{width:42px;height:15px;top:-18px;left:38%;background:#aa273ca8;border:1px solid #75233177;clip-path:none;transform:rotate(-7deg)}
+.card-index{background:#c53546;color:#fff;border-radius:0;font-size:10px}
+.card-arrow{background:#2a2228;color:#f4eded;border:1px solid #d0bfc1}
+.char-card-info{color:#231f22}.char-card-info h3{color:#171417;font-family:var(--mono);font-size:20px}.char-card-info p{color:#7a6265}
+.char-card-info .micro,.char-card-info>svg{color:#b52c3c}
+.art-red{background:linear-gradient(140deg,#3a292d,#211f24 60%,#4a2631);color:#9b5c67}
+.art-blue{background:linear-gradient(140deg,#343940,#202831 68%,#474956);color:#8194aa}
+.art-violet{background:linear-gradient(140deg,#38313b,#242129 68%,#49323c);color:#9e839d}
+.art-orbit{border:1px solid currentColor;opacity:.35;transform:none}
+.art-monogram{color:#b3a2a6;opacity:.55}
+.art-floor,.corner-label{color:#d8c8c7;letter-spacing:.12em;font-weight:700}
+.art-cross{color:#e24a5c}
+/* Supporting organizations become two compact concert-poster panels */
+.associate-tile,.explore-tile{border:1px solid #63515a;border-radius:0;box-shadow:5px 6px 0 #000;color:#f5eeee;transition:transform .22s ease,box-shadow .22s}
+.associate-tile:hover,.explore-tile:hover{transform:translateY(-5px);box-shadow:7px 9px 0 #000}
+.assoc-church{background:linear-gradient(145deg,#2d343f,#20242c)}
+.assoc-informants{background:linear-gradient(145deg,#37272e,#231d22)}
+.assoc-label,.assoc-link{color:#e7b4bc}
+.assoc-graphic{color:#f2dce3;opacity:.15}
+.associate-tile h3,.explore-tile h3{color:#f4eceb}
+.associate-tile h3 small,.explore-tile p{color:#c5b6bb}
+.explore-tile:nth-child(1){background:linear-gradient(135deg,#321f28,#221d22)}
+.explore-tile:nth-child(2){background:linear-gradient(135deg,#23272c,#1c1e23)}
+.explore-mark{color:#e34355;opacity:.52}.tile-arrow{color:#f3e9e8}
+/* Character and location pages */
+.faction-hero{border:1px solid #677583;border-radius:0;box-shadow:6px 7px 0 #060607;background:radial-gradient(circle at 80% 32%,#54708a2a 0 20%,transparent 20.5%),linear-gradient(135deg,#25313c,#141c26);color:#f1e9e9}
+.faction-hero .eyebrow,.faction-hero h1 em{color:#b9d2ed}.faction-hero h1{color:#f0eeee}
+.faction-hero p,.faction-note{color:#c1c9d2}.faction-seal{color:#9db8d0;border:1px dashed #7796ae}
+.informant-tab{color:#f3e8ea;background:#2a242a;border:1px solid #76575f;border-radius:0;box-shadow:3px 4px 0 #050506}
+.informant-tab span{color:#c9a4ad}.informant-tab.active{background:#983042;color:#fff;border:1px solid #e8c9ce}
+.informant-tab:hover{border-color:#e5c8cd}
+.informant-content h2,.profile-heading h1{color:#f6eeee}
+.intro-text,.profile-description,.profile-tabpanel{color:#c7babc}
+.character-eyebrow,.tag-line{color:#ec5866!important}
+.big-art,.profile-art{border:8px solid #eee9e3!important;border-bottom-width:29px!important;outline:1px solid #534048;box-shadow:7px 8px 0 #030304;background:#242027;transform:rotate(-.5deg)}
+.tag-outline{background:#3a2630;color:#f1bfc6;border:1px solid #c85a68}
+.prompt-title h3{color:#f3efed}.prompt-title h3 em{color:#e14457}
+.prompt-box{background:#ebe7df;border:1px solid #272024;border-radius:0;box-shadow:5px 5px 0 #070708;margin:16px 0;transform:none}
+.prompt-box:nth-of-type(even){transform:none}
+.prompt-box:before{top:-10px;height:15px;width:42px;background:#9d2939b5;border-color:#67202a}
+.prompt-head{background:#e2dad2;border-bottom:1px solid #9e9292;color:#231e22}
+.prompt-head strong{color:#272024}.prompt-head small{color:#786e71}
+.prompt-body{background:repeating-linear-gradient(0deg,#ebe7df 0,#ebe7df 27px,#d3c5c374 28px,#ebe7df 29px);color:#31272b}
+.prompt-body pre{color:#342b30}.prompt-body .empty-note{color:#75676b}.prompt-body svg{color:#a32c3f}
+.mini-btn{background:#31262c;color:#f2e9e9;border:1px solid #7e6470}.mini-btn:hover{background:#be3246;color:#fff}
+.prompt-editor{background:#e8e2dc}.prompt-editor textarea{background:#faf8f4;color:#241e22;border:1px solid #81757a}
+.prompt-editor-bottom{color:#60545a}.storage-note{background:#251e23;color:#d8c1c3;border-left:3px solid #dd4358}
+.profile-meta b,.profile-meta small{color:#dcd2d1}
+.profile-divider,.thin-divider{background:#57464d}.profile-image-foot{color:#aaa0a5}
+.subtabs{border-bottom:1px solid #63515b}.subtab{color:#ac9aa0}.subtab.active{color:#fa646f;border-bottom:3px solid #ef4658}
+.profile-tags span{background:#2d252a;border:1px solid #7d505b;color:#e9ced2}
+.linked-resource{background:#242026;border:1px solid #71505b}.linked-resource span{color:#cba8ad}.linked-resource a{color:#ff717f}
+.profile-bottom-links a{color:#e4d5d8;border-color:#78616a}.profile-bottom-links a:hover{color:#ff6c77}
+.empty-subpanel{background:#201e22;border:1px dashed #65535b;color:#c3aeb4}.empty-subpanel strong{color:#eee6e5}.empty-subpanel p{color:#aea0a5}
+/* Pinned evidence board: black instead of kraft cardboard */
+.relation-canvas{background:#1a181c;border:1px solid #63535b;border-radius:0;box-shadow:6px 7px 0 #030304}
+.relation-grid{background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:25px 25px}
+.relation-lines path{stroke:#df4054;stroke-width:2;stroke-dasharray:5 6}
+.canvas-indicator,.canvas-corner{background:#30272c;color:#e9cdcd;border:1px solid #65515c}
+.rel-node{background:#eae5e0;border:1px solid #181417;color:#241d21;border-radius:0;box-shadow:4px 5px 0 #000}
+.rel-node:nth-of-type(even){transform:translate(-50%,-50%) rotate(1deg)}
+.rel-node.rel-active{background:#f2e2e0;outline:2px solid #db3c52;box-shadow:5px 6px 0 #000}
+.rel-node strong{color:#241e22}.rel-node small{color:#8f4454}
+.relation-details{background:#272126;border:1px solid #74616b;border-radius:0;box-shadow:5px 6px 0 #030304;color:#f6eeeb}
+.relation-details h2{color:#f6eeee}.relation-details p{color:#cfbfc4}.relation-details .muted,.notice-small,.relation-legend{color:#c1acb4}
+.relation-legend i{border-color:#d7c7cb}
+/* Buildings as monochrome printed photo contact sheets */
+.location-card{background:#eae6e0;border:1px solid #2b272b;border-radius:0;box-shadow:6px 7px 0 #000;color:#19161a;padding:11px;transform:rotate(-.2deg)}
+.location-card:nth-child(2){transform:rotate(.7deg)}
+.location-card:hover,.location-card:nth-child(2):hover{border-color:#2b272b;transform:translateY(-7px) rotate(0);box-shadow:8px 10px 0 #000}
+.location-card:before{height:15px;width:49px;top:-9px;background:#9f2336b0;border-color:#6b1c2a}
+.location-visual{border:1px solid #78717b;background:#24262b}
+.location-body,.location-body h2{color:#231f23}.location-body p{color:#73676a}
+.location-topline,.location-footer{color:#a23648}.circ-arrow{background:#be3548;color:#fff;border:0}
+.place-art{background:linear-gradient(150deg,#464047,#22242b);color:#aaa0a7}
+.place-blue{background:linear-gradient(155deg,#425361,#242f3a);color:#9fb0be}
+.place-art:before,.place-art:after{border:1px dashed #aaa0a65b}
+.location-add{background:#1d1b20;border:1px dashed #6f6067;border-radius:0;color:#bcaeb2}
+.location-add strong{color:#f1ebeb}.location-add span{color:#a99a9f}.add-circle{color:#dd5664;border-color:#a04451}
+.location-hero{background:#242024;border:1px solid #79646b;box-shadow:6px 7px 0 #020203;color:#f3eeeb}
+.location-hero-left{background:#252126}.location-hero h1,.location-hero h2{color:#f4eded}.location-hero p{color:#c4b5b9}
+.location-hero-art{background:#2e282e}.location-details-panel{background:#272126;border:1px solid #6b5660;box-shadow:5px 6px 0 #000;color:#f1e9e9}
+.location-details-panel h3{color:#f1e9e9}.location-details-panel p,.detail-rows span,.detail-rows strong{color:#d0c2c6}
+.related-chars a{background:#342930;border:1px solid #7c5965;color:#f0e2e5}
+/* Gallery: rough paper frames, but not comic-book stickers */
+.gallery-tile{background:#eae6df;border:1px solid #211f22;color:#382c31;box-shadow:5px 6px 0 #000;padding:13px 10px;transform:rotate(-.5deg)}
+.gallery-tile:nth-child(3n+2){transform:rotate(1deg)}.gallery-tile:nth-child(4n){transform:rotate(0)}
+.gallery-tile:before{height:13px;width:39px;top:-8px;background:#ad2f40a7}
+.gallery-tile:hover,.gallery-tile:nth-child(3n+2):hover,.gallery-tile:nth-child(4n):hover{transform:translateY(-7px) rotate(0);box-shadow:7px 10px 0 #000}
+.gallery-tile.art-red{background:#ede5e0}.gallery-tile.art-blue{background:#dce1e6}.gallery-tile.art-violet{background:#e5dfe5}
+.gallery-topline{color:#9e384c}.gallery-bottom{color:#2c2428;border-top:1px dashed #ac979d}
+.gallery-center{color:#866e78}.gallery-loaded .gallery-topline,.gallery-loaded .gallery-bottom{color:#201b20;background:#e9e2dc}
+.modal-backdrop{background:#080709e8}.modal-card{background:#eae6df;color:#241e23;border:1px solid #100d10}
+.modal-card p{color:#241e23}.modal-art{background:#d3cbd0;color:#654b56}.modal-close{background:#b62b40;color:#fff}
+.toast{background:#292329;color:#fff;border:1px solid #d74b5a;box-shadow:4px 5px 0 #000;border-radius:0}
+/* Softer, quicker motion than comic-style spring movements. */
+.reveal{animation:rock-rise .42s ease-out both}.page-enter{animation:rock-rise .34s ease-out both}
+@keyframes rock-rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:860px){
+ .sidebar{box-shadow:8px 0 0 #050506}.mobile-scrim.visible{background:#080709c9}
+ .hero-left{width:68%}
+}
+@media(max-width:610px){
+ body{background-size:20px 20px,auto,auto}
+ .home-hero{box-shadow:5px 6px 0 #000;min-height:625px}
+ .hero-title{font-size:clamp(52px,12.6vw,83px)}
+ .hero-title strong{text-shadow:2px 3px 0 #080709;-webkit-text-stroke:0}
+ .hero-jp{font-size:13px}.hero-sub{color:#c4b8bb}
+ .hero-scrap{top:auto;left:8%;right:auto;width:84%;bottom:36px;height:282px}
+ .hero-photo{width:43%;box-shadow:4px 5px 0 #000}
+ .hero-photo-1{left:0%;top:22%;transform:rotate(-8deg)}.hero-photo-2{left:54%;top:2%;transform:rotate(8deg)}.hero-photo-3{left:28%;top:54%;transform:rotate(-2deg)}
+ .hero-stamp{height:47px;width:61px;font-size:8px}
+ .hero-photo:before{height:11px;width:30px;top:-7px}
+ .section-heading h2{font-size:33px}
+ .char-card{box-shadow:3px 4px 0 #000}
+ .char-card-info h3{font-size:14px}
+ .big-art,.profile-art{border-width:6px!important;border-bottom-width:24px!important;box-shadow:4px 5px 0 #000}
+ .relation-details,.location-card,.gallery-tile{box-shadow:4px 5px 0 #000}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-photo,.reveal,.page-enter{animation:none!important}
+ .char-card,.hero-photo,.location-card,.gallery-tile,.btn,.associate-tile,.explore-tile{transition:none!important}
+}

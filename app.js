@@ -69,33 +69,39 @@
   }
   function charCard(c,variant=''){
     return `<a class="char-card group-${groupColor(c.group)} ${variant}" href="${href('character/'+c.id)}" aria-label="${esc(c.name)}の詳細へ">
-      <div class="char-card-art">${imgOrPlaceholder(c)}<span class="card-index">${esc(c.index)} / 06</span><span class="card-arrow">${icon('north',17)}</span></div>
+      <div class="char-card-art"><span class="paper-tape" aria-hidden="true"></span>${imgOrPlaceholder(c)}<span class="card-index">${esc(c.index)} / 06</span><span class="card-arrow">${icon('north',17)}</span></div>
       <div class="char-card-info"><div><div class="micro muted">${esc(c.role)}</div><h3>${esc(c.name)}</h3><p>${esc(c.subtitle)}</p></div>${icon('arrow',19)}</div>
     </a>`;
   }
+  function heroPhoto(c,slot){return `<a href="${href('character/'+c.id)}" class="hero-photo hero-photo-${slot}" aria-label="${esc(c.name)}のキャラクターページへ"><div class="hero-photo-art">${imgOrPlaceholder(c)}</div><div class="hero-photo-label"><b>${esc(c.name)}</b><span>FILE / ${esc(c.index)}</span></div></a>`;}
   function navLink([path,label,ic],current){let active = current===path || ((current==='character')&&(path==='characters')) || ((current==='place')&&(path==='city'));
     return `<a href="${href(path)}" class="nav-link ${active?'active':''}" data-navigate="${path}" aria-current="${active?'page':'false'}"><span class="nav-icon">${icon(ic,18)}</span><span>${esc(label)}</span>${active?'<i class="active-dot"></i>':''}</a>`;
   }
   function sidebar(current){return `<aside class="sidebar ${state.mobileMenu?'sidebar-open':''}" id="sidebar">
-    <a class="brand" href="#home"><span class="brand-mark"><span></span><span></span><span></span><span></span></span><span><strong>OC<span> / </span>ARCHIVE</strong><small>UNFOLD THE UNKNOWN</small></span></a>
+    <a class="brand" href="#home"><span class="brand-mark"><span></span><span></span><span></span><span></span></span><span><strong>OC<span> / </span>ARCHIVE</strong><small>ODD JOBS & OTHER STORIES</small></span></a>
     <div class="side-divider"></div><nav class="side-nav" aria-label="メインナビゲーション">${NAV.map(s=>`<div class="nav-group"><div class="nav-title">${s.label}</div>${s.links.map(l=>navLink(l,current)).join('')}</div>`).join('')}</nav>
-    <div class="side-bottom"><span class="live-pulse"></span><span>PROTOTYPE VERSION 01</span><small>VISUAL DEMO · NO ARTWORK</small></div>
+    <div class="side-bottom"><span class="live-pulse"></span><span>THE AGENCY / CUT 03</span><small>YOUR ART GOES HERE</small></div>
   </aside>`;}
   function topbar(page){return `<header class="topbar"><button type="button" data-menu="toggle" class="menu-toggle" aria-label="メニューを開閉">${icon('menu',22)}</button>
      <div class="crumb">ARCHIVE <span>/</span> <strong>${esc(page==='character'?'CHARACTER':page==='place'?'LOCATION':N[page]||'HOME')}</strong></div>
-     <div class="top-right"><span class="top-tag">ORIGINAL CHARACTERS</span><span class="status-badge"><i></i>PREVIEW SITE</span></div></header>`;}
-  function shell(page, content){return `<div class="layout">${sidebar(page)}<div class="mobile-scrim ${state.mobileMenu?'visible':''}" data-menu="close"></div><div class="content-column">${topbar(page)}<main class="main-content" id="main-content"><div class="page-enter">${content}</div><footer class="footer"><span>© OC ARCHIVE · PROTOTYPE</span><span>CREATED FOR ORIGINAL CHARACTERS <em>✦</em> 2026</span></footer></main></div><div class="toast" role="status" id="toast"></div>${modalMarkup()}</div>`;}
+     <div class="top-right"><span class="top-tag">ORIGINAL CHARACTERS</span><span class="status-badge"><i></i>ROCK / FILE EDITION</span></div></header>`;}
+  function shell(page, content){return `<div class="layout">${sidebar(page)}<div class="mobile-scrim ${state.mobileMenu?'visible':''}" data-menu="close"></div><div class="content-column">${topbar(page)}<main class="main-content" id="main-content"><div class="page-enter">${content}</div><footer class="footer"><span>© OC ARCHIVE · PROTOTYPE</span><span>THE AGENCY / ORIGINAL CHARACTERS <em>✦</em> 2026</span></footer></main></div><div class="toast" role="status" id="toast"></div>${modalMarkup()}</div>`;}
   function buttonRoute(label,to,style='primary'){return `<a href="${href(to)}" class="btn btn-${style}">${esc(label)}${icon('north',17)}</a>`;}
   function homePage(){let main=DATA.characters.filter(c=>c.group==='agency');return `
     <section class="home-hero reveal">
-      <div class="hero-contours" aria-hidden="true"></div><div class="hero-rail">01 — MAIN FACTION <span>EVERY STORY BEGINS SOMEWHERE.</span></div>
-      <div class="hero-left"><div class="eyebrow"><i></i>THE WORLD OF ORIGINAL CHARACTERS</div>
+      <div class="hero-contours" aria-hidden="true"></div><div class="hero-rail">THE AGENCY / FIELD NOTES <span>PEOPLE, PLACES & ALL THE LITTLE STORIES.</span></div>
+      <div class="hero-left"><div class="eyebrow"><i></i>FILE NO. 001 / THE AGENCY</div>
         <div class="hero-title"><span>THE</span><strong>AGENCY<span class="hero-period">.</span></strong></div>
         <p class="hero-jp">便利屋と、彼らを取り巻く人々の記録。</p>
         <p class="hero-sub">物語の中心は便利屋。関係する人々、活動拠点、街の記録をたどるオリジナルキャラクター・アーカイブ。</p>
         <div class="hero-actions">${buttonRoute('MEMBERS を見る','characters')}${buttonRoute('相関図を見る','relations','text')}</div>
       </div>
-      <div class="hero-visual"><div class="hero-visual-grain"></div><div class="hero-corner">FEATURED ARTWORK <span>01 / 01</span></div><div class="hero-visual-center"><span class="fine-circle"></span><b>ART<br/>COMING<br/>SOON</b></div><div class="hero-visual-bottom">REPLACE WITH YOUR OWN ILLUSTRATION <span>↗</span></div></div>
+      <div class="hero-scrap" aria-label="便利屋メンバーのフォトカード">
+        <span class="hero-stamp">ODD JOBS<br/>24 / 7</span>
+        ${main.slice(0,3).map((c,i)=>heroPhoto(c,i+1)).join('')}
+        <span class="hero-marker" aria-hidden="true">✳</span>
+        <span class="hero-scribble" aria-hidden="true">ARCHIVE →</span>
+      </div>
       <span class="vertical-word">COLLECTION — 2026</span><div class="hero-bottom"><span class="scroll-line"></span> SCROLL TO EXPLORE <span class="hero-counter">01 / 04</span></div>
     </section>
     <section class="section-block reveal" id="home-members"><div class="section-heading"><div><span class="section-num">01 / MAIN MEMBERS</span><h2>Meet the <em>agency.</em></h2><p>メインメンバーの記録。画像・プロフィールは随時追加できます。</p></div><a href="#characters" class="text-link">ALL CHARACTERS ${icon('north',17)}</a></div>
@@ -124,11 +130,11 @@
    <p class="storage-note">${icon('info',16)} 「編集・保存」は試作用で、入力内容は現在使用中のブラウザ内だけに保存されます。公開サイトの内容を変更する機能ではありません。正式公開用プロンプトは data.js に登録します。</p>
    </div></section>`;}
   function profilePage(id){const c=getChar(id);if(!c)return notFound();const tabs=[['about','PROFILE'],['gallery','GALLERY'],...(c.group==='informants'?[['prompts','PROMPTS']]:[])];return `<a href="${href(c.group==='informants'?'informants':c.group==='church'?'church':'characters')}" class="backlink">${icon('back',16)} BACK TO ${c.group==='informants'?'INFORMANTS':c.group==='church'?'CHURCH':'CHARACTERS'}</a>
-    <section class="profile-layout reveal"><div class="profile-image-col">${imgOrPlaceholder(c,'profile-art')}<div class="profile-image-foot"><span>NO. ${esc(c.index)}</span><span>ARTWORK NOT SET</span></div></div><div class="profile-info-col"><div class="eyebrow"><i></i>${esc(c.role)} / OC FILE</div><div class="profile-heading"><h1>${esc(c.name)}</h1><span>${esc(c.en)}</span></div><div class="profile-divider"></div><div class="profile-meta"><div><small>AFFILIATION</small><b>${esc(groupText(c.group))}</b></div><div><small>IDENTIFIER</small><b>OC / ${esc(c.index)}</b></div><div><small>STATUS</small><b>DETAILS PENDING</b></div></div>
-    <div class="subtabs">${tabs.map(([key,label])=>`<button data-profile-tab="${key}" class="subtab ${state.profileTab===key?'active':''}">${label}</button>`).join('')}</div><div class="profile-tabpanel">${state.profileTab==='about'?`<div class="section-num">CHARACTER DESCRIPTION</div><p class="profile-description">${esc(c.description)}</p><div class="profile-tags">${c.attributes.length?c.attributes.map(a=>`<span>${esc(a)}</span>`).join(''):'<span>設定準備中</span>'}</div><div class="linked-resource"><span>RELATED LOCATION</span><a href="${href(c.group==='church'?'place/church':'place/office')}">${icon('building',18)} ${esc(c.group==='church'?'教会':'便利屋の事務所')} ${icon('north',15)}</a></div>`:state.profileTab==='gallery'?`${c.image?`<img class="profile-gallery-image" src="${esc(c.image)}" alt="${esc(c.name)}">`:`<div class="empty-subpanel">${icon('image',34)}<strong>イラスト未登録</strong><p>このキャラクターの作品を追加すると、ギャラリーから閲覧できます。</p><a href="#gallery" class="text-link">ギャラリーへ ${icon('north',16)}</a></div>`}`:`${promptBox(c.id,'character')}${promptBox(c.id,'composition')}<p class="storage-note">${icon('info',15)} 編集した内容はこのブラウザにだけ保存されます。</p>`}</div>
+    <section class="profile-layout reveal"><div class="profile-image-col">${imgOrPlaceholder(c,'profile-art')}<div class="profile-image-foot"><span>NO. ${esc(c.index)}</span><span>${c.image?'ARTWORK REGISTERED':'ARTWORK NOT SET'}</span></div></div><div class="profile-info-col"><div class="eyebrow"><i></i>${esc(c.role)} / OC FILE</div><div class="profile-heading"><h1>${esc(c.name)}</h1><span>${esc(c.en)}</span></div><div class="profile-divider"></div><div class="profile-meta"><div><small>AFFILIATION</small><b>${esc(groupText(c.group))}</b></div><div><small>IDENTIFIER</small><b>OC / ${esc(c.index)}</b></div><div><small>STATUS</small><b>DETAILS PENDING</b></div></div>
+    <div class="subtabs">${tabs.map(([key,label])=>`<button data-profile-tab="${key}" class="subtab ${state.profileTab===key?'active':''}">${label}</button>`).join('')}</div><div class="profile-tabpanel">${state.profileTab==='about'?`<div class="section-num">CHARACTER DESCRIPTION</div><p class="profile-description">${esc(c.description)}</p><div class="profile-tags">${c.attributes.length?c.attributes.map(a=>`<span>${esc(a)}</span>`).join(''):'<span>設定準備中</span>'}</div>${c.group==='informants'?'':`<div class="linked-resource"><span>RELATED LOCATION</span><a href="${href(c.group==='church'?'place/church':'place/office')}">${icon('building',18)} ${esc(c.group==='church'?'教会':'便利屋の事務所')} ${icon('north',15)}</a></div>`}`:state.profileTab==='gallery'?`${c.image?`<img class="profile-gallery-image" src="${esc(c.image)}" alt="${esc(c.name)}">`:`<div class="empty-subpanel">${icon('image',34)}<strong>イラスト未登録</strong><p>このキャラクターの作品を追加すると、ギャラリーから閲覧できます。</p><a href="#gallery" class="text-link">ギャラリーへ ${icon('north',16)}</a></div>`}`:`${promptBox(c.id,'character')}${promptBox(c.id,'composition')}<p class="storage-note">${icon('info',15)} 編集した内容はこのブラウザにだけ保存されます。</p>`}</div>
     <div class="profile-bottom-links"><a href="#relations">${icon('network',19)} 人物相関図へ ${icon('north',17)}</a><a href="#characters">${icon('users',19)} 一覧へ ${icon('north',17)}</a></div></div></section>`;}
   function relationsPage(){const orgMode=state.relMode==='groups';let nodes=orgMode?[{id:'agency',name:'便利屋',en:'MAIN FACTION',x:50,y:43,type:'red'},{id:'church',name:'教会組',en:'ASSOCIATE',x:22,y:75,type:'blue'},{id:'informants',name:'情報屋',en:'ASSOCIATE',x:78,y:75,type:'violet'}]:[
-      {id:'ashiya',name:'アシヤ',en:'AGENCY',x:20,y:25,type:'red'},{id:'blackhair',name:'黒髪の男',en:'AGENCY',x:50,y:25,type:'red'},{id:'pinkhair',name:'ピンク髪の男',en:'AGENCY',x:80,y:25,type:'red'},
+      {id:'ashiya',name:'アシヤ',en:'AGENCY',x:16,y:25,type:'red'},{id:'zev',name:'ゼヴ',en:'AGENCY',x:50,y:21,type:'red'},{id:'nero',name:'ネロ',en:'AGENCY',x:78,y:29,type:'red'},
       {id:'sister',name:'シスター',en:'CHURCH',x:20,y:74,type:'blue'},{id:'informant01',name:'情報屋 01',en:'INFORMANT',x:50,y:74,type:'violet'},{id:'informant02',name:'情報屋 02',en:'INFORMANT',x:80,y:74,type:'violet'}];
     let selected=nodes.find(n=>n.id===state.relSelected)||nodes[0];let details=orgMode?(selected.id==='agency'?'この物語の中心となる組織。':selected.id==='church'?'便利屋の協力者として掲載する教会組。':'便利屋に関わる情報屋二人のカテゴリ。'):(getChar(selected.id)?.description||'人物設定は未登録です。');
     let link=orgMode?(selected.id==='agency'?'characters':selected.id==='church'?'church':'informants'):'character/'+selected.id;
